@@ -1,0 +1,46 @@
+POST http://localhost:3000/api/1.0/payments
+content-type: application/json
+
+{
+    "description": "Pago",
+    "billed_hours": 2.5,
+    "billed_at": "2020-04-01",
+    "billing_currency": "clf",
+    "billed_amount": 1.6,
+    "needs_exchange": false,
+    "exchange_currency": "clp"
+}
+
+
+
+###
+GET http://localhost:3000/api/1.0/payments
+
+
+
+###
+GET http://localhost:4000/payments/pmt_22a2e5
+
+
+
+###
+PUT  http://localhost:3000/api/1.0/payments/pmt_f818ae
+content-type: application/json
+
+{
+    "description": "Pago redoble",
+    "billed_hours": 2.6,
+    "billed_at": "2020-04-01",
+    "billing_currency": "clf",
+    "billed_amount": 1.6,
+    "needs_exchange": true,
+    "exchange_currency": "clp"
+}
+
+
+
+
+
+###
+DELETE  http://localhost:3000/api/1.0/payments/pmt_fbb386
+
