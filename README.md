@@ -43,11 +43,5 @@ Additions to this template will come soon, things like data validation, unitary 
 ## version 1.1
 
 ***Swagger*** package was used to create the documentation of the API.  It can be found on:
-**http://localhost:3000/api/1.0/docs**
-
-## version 1.2
-
-***Morgan*** package was added as logger for calls to API server.  Log file is saved in server, in *log* folder
-
-***Joi*** package was added to validate information sent as payload to the server for create and update information in the API (POST and PUT)
+**http://localhost:3000/api/1.0/docs
 
