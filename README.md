@@ -43,5 +43,5 @@ Additions to this template will come soon, things like data validation, unitary 
 ## version 1.1
 
 ***Swagger*** package was used to create the documentation of the API.  It can be found on:
-**http://localhost:3000/api/1.0/docs
+**http://localhost:3000/api/1.0/docs**
 
