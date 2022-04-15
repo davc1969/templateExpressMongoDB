@@ -7,9 +7,9 @@ const dbConnect = () => {
         useUnifiedTopology: true
     }, (err, res) => {
         if (!err) {
-            console.log(`---> Mongo DB connected succesfully on port 27017  <---`)
+            console.log(`   ---> Mongo DB connected succesfully on port 27017  <---`)
         } else {
-            console.log(`---> Mongo DB server not initializated  <---`);
+            console.log(`   ---> Mongo DB server not initializated  <---`);
             console.log(`Error: ${err}`);
         }
     })

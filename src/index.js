@@ -5,7 +5,9 @@ const cors = require("cors");
 const PORT = process.env.PORT || 3000;
 const { dbConnect } = require("./config/mongodb");
 const {routes} = require ("./routes/routes")
-const swaggerDocs = require("./utils/swagger")
+const swaggerDocs = require("./utils/swagger");
+const startMorganLogger = require("./utils/morgan");
+const { startJoiService } = require("./utils/joi")
 
 
 
@@ -13,6 +15,9 @@ app.use(cors());
 app.use(express.json());
 
 dbConnect();
+startMorganLogger(app, __dirname + "/log/access.log");
+startJoiService();
+
 
 swaggerDocs(app, PORT);
 app.use("/api/1.0", routes);

@@ -3,6 +3,8 @@ const httpError = require("../utils/httpErrorshandler");
 const { v4: uuidv4 } = require('uuid');
 const axios = require("axios");
 const paymentsModel = require("../models/payments");
+const { postPaymentSchema, updatePaymentSchema } = require("../config/joi");
+const { validateSchema } = require("../utils/joi");
 
 const getPayments = async (req, res) => {
     try {
@@ -33,7 +35,6 @@ const createPayment = async (req, res) => {
         req.body._id = "pmt_" + uuidv4().slice(0, 6);
         req.body.object = "payment";
         req.body.currency = "clp";
-        console.log("antes", req.body)
         if (req.body.needs_exchange) {
             const searchDate = req.body.billed_at.substr(8, 2) + "-" + req.body.billed_at.substr(5, 2) + "-" +req.body.billed_at.substr(0, 4);
     
@@ -49,15 +50,18 @@ const createPayment = async (req, res) => {
             };
             req.body.amount = parseInt(ex_exchange_rate * req.body.billed_amount);
 
-            console.log("dentro", req.body);
         };
-        console.log("despues", req.body);
-        const response = await paymentsModel.create(req.body);
-        console.log("final", req.body);
-        res.status(httpCodes.CREATED);
-        res.send({ 
-            payment: response
-        })
+
+        const validSchema = validateSchema(req.body, postPaymentSchema);
+        if (!validSchema.error) {
+            const response = await paymentsModel.create(req.body);
+            res.status(httpCodes.CREATED);
+            res.send({ 
+                payment: response
+            })
+        } else {
+            throw httpCodes.BAD_REQUEST
+        }
 
     } catch (error) {
         httpError(error, res)
@@ -81,15 +85,19 @@ const updatePayment = async (req, res) => {
             };
             req.body.amount = parseInt(ex_exchange_rate * req.body.billed_amount);
 
-            console.log("dentro", req.body);
         };
-        console.log("despues", req.body);
-        const response = await paymentsModel.findByIdAndUpdate(req.params.id, req.body);
-        console.log("final", req.body);
-        res.status(httpCodes.ACCEPTED);
-        res.send({ 
-            serverMessage: "payment succesfully updated"
-        })
+
+        const validSchema = validateSchema(req.body, updatePaymentSchema);
+        
+        if (!validSchema.error) {
+            const response = await paymentsModel.findByIdAndUpdate(req.params.id, req.body);
+            res.status(httpCodes.ACCEPTED);
+            res.send({ 
+                serverMessage: "payment succesfully updated"
+            })
+        } else {
+            throw httpCodes.BAD_REQUEST
+        }
 
     } catch (error) {
         httpError(error, res)

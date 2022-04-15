@@ -1,0 +1,14 @@
+::ffff:127.0.0.1 - - [14/Apr/2022:19:58:51 +0000] "GET /api/1.0/payments HTTP/1.1" 200 1705
+::ffff:127.0.0.1 - - [15/Apr/2022:02:42:47 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:43:25 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:44:13 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:47:00 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:47:37 +0000] "GET /api/1.0/payments HTTP/1.1" 200 2881
+::ffff:127.0.0.1 - - [15/Apr/2022:02:49:18 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:52:20 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:52:57 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:55:13 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:55:24 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:56:49 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
+::ffff:127.0.0.1 - - [15/Apr/2022:02:57:24 +0000] "POST /api/1.0/payments HTTP/1.1" 400 11
+::ffff:127.0.0.1 - - [15/Apr/2022:02:59:07 +0000] "POST /api/1.0/payments HTTP/1.1" 201 305
