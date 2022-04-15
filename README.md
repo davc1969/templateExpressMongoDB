@@ -45,3 +45,10 @@ Additions to this template will come soon, things like data validation, unitary 
 ***Swagger*** package was used to create the documentation of the API.  It can be found on:
 **http://localhost:3000/api/1.0/docs**
 
+
+## version 1.2
+
+***JOI*** package was included for validation of data sent to API when create or update a payment
+
+***Morgan*** package was also included as logger to the calls for the API service
+
