@@ -1,8 +1,9 @@
 const joi = require("joi");
 const joiSchemas = require("../config/joi");
+const cOut = require("../utils/cOut");
 
 const startJoiService = () => {
-    console.log(`   ---> Joi service running. Schemas for validation located in /src/config/joi.js`);
+    cOut.blue(`   ---> Joi service running. Schemas for validation located in /src/config/joi.js`);
     return 0
 }
 
@@ -10,10 +11,10 @@ const startJoiService = () => {
 const validateSchema = (objectToValidate, schema) => {
     const validation =  schema.validate(objectToValidate);
     if (!validation.error) {
-        console.log("   JOI validation: object is valid")
+        cOut.green("   JOI validation: object is valid")
     } else {
-        console.log("   JOI validation: object is not valid");
-        console.log(validation.error);
+        cOut.warning("   JOI validation: object is not valid");
+        cOut.warning(validation.error);
     }
     return validation
 }

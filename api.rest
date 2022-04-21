@@ -1,8 +1,9 @@
 POST http://localhost:3000/api/1.0/payments
 content-type: application/json
+Authorization: Bearer eeyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjVjYmYzNDM5MmQwMDU1ZGQzNjM2MjciLCJyb2xlIjoiVVNFUiIsImlhdCI6MTY1MDI5NzEwMiwiZXhwIjoxNjUwMzA0MzAyfQ.vXvFG2qXKNSbL2TxbhwAJMhG0qHpQn4FJYCGsKz5FkM
 
 {
-    "description": "Pago",
+    "description": "Pago1804 2",
     "billed_hours": 2.5,
     "billed_at": "2020-04-01",
     "billing_currency": "clf",
@@ -13,9 +14,11 @@ content-type: application/json
 
 
 
+
+
 ###
 GET http://localhost:3000/api/1.0/payments
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjVjZGMyMTk3ODYzNWNmMzI2M2E0MTIiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2NTAyODk4NDF9.qq5CkkJzkPSSTepJNmDk1XhSGdeyvpnwsvU93IKoKHU
 
 
 ###
@@ -44,3 +47,30 @@ content-type: application/json
 ###
 DELETE  http://localhost:3000/api/1.0/payments/pmt_fbb386
 
+
+###
+// API queries to user authetication model
+
+GET http://localhost:3000/api/1.0/auth
+
+###
+
+POST http://localhost:3000/api/1.0/auth/register
+Content-Type: application/json
+
+    {
+        "email": "once@a.com",
+        "password": "12345678",
+        "role": "user"
+    }
+
+
+###
+
+POST http://localhost:3000/api/1.0/auth/login
+Content-Type: application/json
+
+    {
+        "email": "uno@a.com",
+        "password": "12345678"
+    }

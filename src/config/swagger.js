@@ -1,4 +1,5 @@
-const paymentSchema = require("../models/payments")
+const paymentSchema = require("../models/payments");
+const { PORT } = require("../config/config");
 
 
 const swaggerOptions = {
@@ -16,7 +17,7 @@ const swaggerOptions = {
     produces: [ "application/json" ],
     servers: [
         {
-            url: `http://localhost:3000/api/1.0`,
+            url: `http://localhost:${PORT}/api/1.0`,
             description: "development server for payments info"
         }
     ],

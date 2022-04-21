@@ -1,34 +1,40 @@
 const express = require("express");
 const app = express();
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config( { path: path.resolve(__dirname, "./.env") } );
 const cors = require("cors");
-const PORT = process.env.PORT || 3000;
 const { dbConnect } = require("./config/mongodb");
-const {routes} = require ("./routes/routes")
-const swaggerDocs = require("./utils/swagger");
-const startMorganLogger = require("./utils/morgan");
-const { startJoiService } = require("./utils/joi")
+const {routes} = require ("./routes/routes");
+const cOut = require("./utils/cOut");
+const swaggerDocs = require("./middlewares/swagger");
+const startMorganLogger = require("./middlewares/morgan");
+const { startJoiService } = require("./utils/joi");
+const { startMailService } = require("./utils/nodemailer");
+const startHandleBarsService = require("./middlewares/handlebars");
+const { initializeJWT } = require("./utils/jwt");
 
 
+const { PORT, LOGFILE } = require("./config/config")
 
 app.use(cors());
 app.use(express.json());
 
-dbConnect();
-startMorganLogger(app, __dirname + "/log/access.log");
+dbConnect();   // ! Connection to MongoDB
+startHandleBarsService(app);
+initializeJWT();
+startMorganLogger(app, __dirname + LOGFILE); 
 startJoiService();
+startMailService();
+swaggerDocs(app, PORT);  //! start swagger service for api documentation
 
-
-swaggerDocs(app, PORT);
+//  routes
 app.use("/api/1.0", routes);
 
-const listener = app.listen(PORT, ( () => {
-    console.log(`Server is running on port ${PORT}, process ${process.pid}`)
+app.listen(PORT, ( () => {
+    cOut.info(`Server is running on port ${PORT}, process ${process.pid}`);
 }));
 
-const listeningPort = () => {
-    return listener.address().port
-};
 
 
-module.exports = listeningPort
+
+module.exports = app

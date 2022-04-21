@@ -33,8 +33,17 @@ const updatePaymentSchema = Joi.object( {
 
 });
 
+//! Schema for users
+const usersSchema = Joi.object( {
+    email: Joi.string().email().required(),
+    password: Joi.string().min(8).required(),
+    role: Joi.string().required().valid("ADMIN", "USER")
+})
+
 
 module.exports = {
     postPaymentSchema,
-    updatePaymentSchema
+    updatePaymentSchema,
+
+    usersSchema
 }

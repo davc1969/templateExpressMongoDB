@@ -38,17 +38,31 @@ the route for the API is
 
 the file *api.rest* shows the example for the use of the CRUD.  This file works in VSC with the extension *REST Client*.
 
-Additions to this template will come soon, things like data validation, unitary tests, handlebars views will be added.
 
-## version 1.1
+## Changelog
+
+### version 1.3
+Authentication, using ***JWT*** and ***BCrypt***, was implemented.  A new API was created to register and login users.  Every user has a role that is assigned during the register.  This role can be ADMIN or USER.
+Authentication by roles was implemented for create new items in payments database (just an exercise), so only ADMINS can create new payments.  ADMIN and USER can see, delete and update payments.
+
+Everytime a new user is registered, all ADMINs receive a mail with the notification.  This email is sent using ***Nodemailer*** package.
+
+A new library was created, called ***cOut*** that  gives format to the output to the server console (*console.log*).  It uses ***Chalk*** package to add colors to every output.
+
+***Mocha & Chai*** were used to create a basic **Unit test** on the *Payments API*.  The tests will run on a specific database created for this (*payment_test*)
+
+### version 1.2
+
+***JOI*** package was included for validation of data sent to API when create or update a payment
+
+***Morgan*** package was also included as logger to the calls for the API service
+
+
+### version 1.1
 
 ***Swagger*** package was used to create the documentation of the API.  It can be found on:
 **http://localhost:3000/api/1.0/docs**
 
 
-## version 1.2
 
-***JOI*** package was included for validation of data sent to API when create or update a payment
-
-***Morgan*** package was also included as logger to the calls for the API service
 
